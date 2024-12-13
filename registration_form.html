@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Membership Registration</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #4d4d4d, #000000);
+        }
+
+        .home-link {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+
+        .home-link a {
+            text-decoration: none;
+            background: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .home-link a:hover {
+            background: #555;
+        }
+
+        .registration-form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .registration-form h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .form-group input[type="radio"] {
+            width: auto;
+        }
+
+        .form-submit {
+            display: flex;
+            justify-content: center; /* Center the button horizontally */
+        }
+
+        .form-submit button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-submit button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home button -->
+    <div class="home-link">
+        <a href="home.html">Home</a>
+    </div>
+
+    <form class="registration-form" id="registrationForm">
+        <h2>Club Membership Registration</h2>
+        <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="radio" id="male" name="gender" value="Male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female" required>
+            <label for="female">Female</label>
+        </div>
+        <div class="form-group">
+            <label for="membership">Membership Type</label>
+            <select id="membership" name="membership" required>
+                <option value="" disabled selected>Select membership type</option>
+                <option value="Basic">Basic</option>
+                <option value="Premium">Premium</option>
+                <option value="VIP">VIP</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="message">Why do you want to join?</label>
+            <textarea id="message" name="message" placeholder="Tell us why you'd like to join" required></textarea>
+        </div>
+        <div class="form-submit">
+            <button type="submit">Register</button>
+        </div>
+    </form>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Collect form data
+            const formData = {
+                fullName: form.fullName.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                gender: form.gender.value,
+                membership: form.membership.value,
+                message: form.message.value,
+            };
+
+            // Save data to localStorage
+            localStorage.setItem('registrationData', JSON.stringify(formData));
+
+            // Redirect to success page
+            window.location.href = 'success.html';
+        });
+    </script>
+</body>
+</html>
